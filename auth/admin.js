@@ -6,7 +6,7 @@ const addContent = document.querySelector(".addContent");
 //後臺取得資料
 // const tableBody = document.getElementById("tableBody");
 function tableData() {
-  axios.get("https://try-json-auth2.onrender.com/views").then(function (response) {
+  axios.get("http://localhost:3000/views").then(function (response) {
     let result = response.data;
     console.log(result);
     const tableBody = document.getElementById("tableBody");
@@ -33,7 +33,7 @@ function tableData() {
       editLink.href = "#";
       editLink.className = "link-info";
       editLink.textContent = "編輯";
-      editLink.setAttribute("href", `https://try-json-auth2.onrender.comedit.html?id=${data.id}`);
+      editLink.setAttribute("href", `http://127.0.0.1:5500/edit.html?id=${data.id}`);
 
       const deleteLink = document.createElement("a");
       deleteLink.href = "#";
@@ -65,7 +65,7 @@ tableData();
 function addBtn() {
   if (addTitle.value !== "" || addContent.value !== "") {
     axios
-      .post(`https://try-json-auth2.onrender.com/views`, {
+      .post(`http://localhost:3000/views`, {
         name: addTitle.value,
         description: addContent.value,
       })
@@ -86,8 +86,8 @@ let editContent = document.querySelector('.editContent');
 let editTitle = document.querySelector('.editTitle');
   //編輯景點
   editId = location.href.split('=')[1];
-  if(window.location.href == `https://try-json-auth2.onrender.comedit.html?id=${editId}`){
-    axios.get(`https://try-json-auth2.onrender.com/views/${editId}`)
+  if(window.location.href == `http://127.0.0.1:5500/edit.html?id=${editId}`){
+    axios.get(`http://localhost:3000/views/${editId}`)
     .then(function (response) {
       console.log(response)
       editTitle.value = JSON.stringify(response.data.name).replace(/^"(.*)"$/, '$1');
@@ -102,7 +102,7 @@ function editCheckBtn(e){
   editId = location.href.split("=")[1];
   e.preventDefault();
   if (editTitle.value !== '' || editContent.value !== '') {
-      axios.patch(`https://try-json-auth2.onrender.com/views/${editId}`, {
+      axios.patch(`http://localhost:3000/views/${editId}`, {
           "name": editTitle.value,
           "description": editContent.value
       })
@@ -125,7 +125,7 @@ function deleteBtn(e) {
   }
   let num = e.target.getAttribute("data-num");
   axios
-    .delete(`https://try-json-auth2.onrender.com/views/${num}`)
+    .delete(`http://localhost:3000/views/${num}`)
     .then(function (response) {
       alert("已刪除!");
       tableData();
