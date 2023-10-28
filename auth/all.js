@@ -7,7 +7,7 @@ let isBackList = currentUrl.includes("backendList");
 
 function getList() {
   axios
-    .get(`http://localhost:3000/views`, {
+    .get(`https://try-json-auth2.onrender.com/views`, {
       headers: {
         authorization: `Bearer ${token}`,
       },
@@ -69,24 +69,24 @@ function showDetail(id) {
   console.log(id);
   if (isBackList) {
     axios
-      .get(`http://localhost:3000/views/${id}`)
+      .get(`https://try-json-auth2.onrender.com/views/${id}`)
       .then(function (response) {
         console.log(response.data);
         //   detail.textContent  = response.data;
         localStorage.setItem("spotDetails", JSON.stringify(response.data));
-        location.href = "http://127.0.0.1:5500/backendListDetail.html";
+        location.href = "https://try-json-auth2.onrender.combackendListDetail.html";
       })
       .catch(function (error) {
         //   console.log(error.response);
       });
   } else {
     axios
-      .get(`http://localhost:3000/views/${id}`)
+      .get(`https://try-json-auth2.onrender.com/views/${id}`)
       .then(function (response) {
         console.log(response.data);
         //   detail.textContent  = response.data;
         localStorage.setItem("spotDetails", JSON.stringify(response.data));
-        location.href = "http://127.0.0.1:5500/listDetail.html";
+        location.href = "https://try-json-auth2.onrender.comlistDetail.html";
       })
       .catch(function (error) {
         //   console.log(error.response);

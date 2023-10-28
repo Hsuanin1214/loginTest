@@ -27,7 +27,7 @@ function signUp() {
   if (obj.email == "1admin1@mail.com" && obj.password == "1234") {
     obj.role = "admin";
     axios
-      .post("http://localhost:3000/signup", obj)
+      .post("https://try-json-auth2.onrender.com/signup", obj)
       .then(function (response) {
         console.log(response.data);
         alert("恭喜帳號註冊成功");
@@ -40,7 +40,7 @@ function signUp() {
       });
   } else {
     axios
-      .post("http://localhost:3000/signup", obj)
+      .post("https://try-json-auth2.onrender.com/signup", obj)
       .then(function (response) {
         console.log(response.data);
         alert("恭喜帳號註冊成功");
@@ -64,7 +64,7 @@ function login() {
   obj.email = userEmail.value;
   obj.password = userPassword.value;
   axios
-    .post("http://localhost:3000/login", obj)
+    .post("https://try-json-auth2.onrender.com/login", obj)
     .then(function (response) {
       console.log(response.data);
       //token可以拿去做修改
@@ -78,9 +78,9 @@ function login() {
       console.log(id);
       alert("登入成功");
       if(obj.email == "1admin1@mail.com" && obj.password == "1234"){
-        window.location.href = "http://127.0.0.1:5500/backendList.html";
+        window.location.href = "https://try-json-auth2.onrender.combackendList.html";
       }else{
-        window.location.href = "http://127.0.0.1:5500/list.html";
+        window.location.href = "https://try-json-auth2.onrender.comlist.html";
       }
       let getDataToken = localStorage.getItem("userTestToken");
       let getDataId = localStorage.getItem("userTestId");
